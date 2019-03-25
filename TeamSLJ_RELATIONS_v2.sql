@@ -18,32 +18,34 @@ CREATE TABLE Friends (
 	FOREIGN KEY(user2) REFERENCES Users(user_id)
 );
 
-CREATE TABLE Reviews (
-	review_stars INTEGER,
-	review_date DATE,
-	text VARCHAR(300),
-	useful_vote INTEGER,
-	funny_vote INTEGER,
-	cool_vote INTEGER,
-	review_id CHAR(22) PRIMARY KEY,
-	user_id CHAR(22) NOT NULL,
-	FOREIGN KEY (user_id) REFERENCES Users(user_id)
-);
-
 CREATE TABLE Business (
 	zipcode CHAR(5),
 	review_count INTEGER,
-	name VARCHAR(32),
+	name VARCHAR(64),
 	latitude FLOAT,
 	longitude FLOAT,
 	city VARCHAR(32),
 	b_state CHAR(2),
-	address VARCHAR(32),
+	address VARCHAR(100),
 	is_open BOOLEAN,
 	stars FLOAT,
 	num_checkins INTEGER,
 	review_rating FLOAT,
 	business_id CHAR(22) PRIMARY KEY
+);
+
+CREATE TABLE Reviews (
+	review_stars INTEGER,
+	review_date DATE,
+	text VARCHAR(2000),
+	useful_vote INTEGER,
+	funny_vote INTEGER,
+	cool_vote INTEGER,
+	review_id CHAR(22) PRIMARY KEY,
+	user_id CHAR(22) NOT NULL,
+	business_id CHAR(22),
+	FOREIGN KEY (user_id) REFERENCES Users(user_id),
+	FOREIGN KEY (business_id) REFERENCES Business(business_id)
 );
 
 CREATE TABLE Categories (
