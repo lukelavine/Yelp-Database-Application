@@ -53,13 +53,13 @@ CREATE TABLE Categories (
 	FOREIGN KEY(business_id) REFERENCES Business(business_id)
 );
 
-CREATE TABLE Attributes (
+/*CREATE TABLE Attributes (
 	a_value VARCHAR(16),
 	a_name VARCHAR(16),
 	business_id CHAR(22),
 	PRIMARY KEY(business_id, a_name),
 	FOREIGN KEY(business_id) REFERENCES Business(business_id)
-);
+);*/
 
 CREATE TABLE Hours (
 	h_open VARCHAR(5),
