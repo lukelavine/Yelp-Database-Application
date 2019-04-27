@@ -231,7 +231,6 @@ def insert2FriendsTable():
 	with open('./yelp_user.JSON','r') as f:
 		line = f.readline()
 		count_line = 0
-		retired = {} 
 		
 		try:
 			conn = psycopg2.connect("dbname='milestone2' user='postgres' host='localhost' password='password'")
@@ -241,17 +240,15 @@ def insert2FriendsTable():
 
 		while line:
 			data = json.loads(line)
-			retired[data["user_id"]] = 0
 			for friend in data["friends"]:
-				if friend not in retired:
-					sql_str = "INSERT INTO Friends (user1, user2) " \
-						"VALUES ('" + cleanStr4SQL(data['user_id']) + "','" + cleanStr4SQL(friend) + "');"
-					try:
-						cur.execute(sql_str)
-					except psycopg2.Error as e:
-						print("Insert to Friends table failed!")
-						print("Error message: ", e)
-					conn.commit()
+				sql_str = "INSERT INTO Friends (user1, user2) " \
+					"VALUES ('" + cleanStr4SQL(data['user_id']) + "','" + cleanStr4SQL(friend) + "');"
+				try:
+					cur.execute(sql_str)
+				except psycopg2.Error as e:
+					print("Insert to Friends table failed!")
+					print("Error message: ", e)
+				conn.commit()
 
 			line = f.readline()
 			count_line +=1

@@ -1,0 +1,62 @@
+﻿<Window x:Class="Milestone1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Yelp" Height="778" Width="893">
+    <Grid>
+        <TabControl Height="752" VerticalAlignment="Top" Margin="0,0,0,-0.333" HorizontalAlignment="Left" Width="1076">
+            <TabItem Header="User Information" Height="22" Margin="-2,-2,-1.667,0" VerticalAlignment="Top">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem Header="Business Search">
+                <Grid Background="#FFE5E5E5" Margin="0,0,182,0">
+                    <GroupBox Header="Select Location&#xD;&#xA;" HorizontalAlignment="Left" Height="205" Margin="10,10,0,0" VerticalAlignment="Top" Width="266">
+                        <Canvas HorizontalAlignment="Left" Margin="0,0,-12,-9.333" VerticalAlignment="Top" Height="175" Width="266">
+                            <Label Content="State" HorizontalAlignment="Left" Height="38" VerticalAlignment="Top" Width="76" FontSize="14" Canvas.Left="10" Canvas.Top="10"/>
+                            <ComboBox x:Name="stateList" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="130" FontSize="14" SelectionChanged="StateList_SelectionChanged" RenderTransformOrigin="-1.667,1.662" Canvas.Left="84" Canvas.Top="13"/>
+                            <Label Content="City" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="75" FontSize="14" Canvas.Left="11" Canvas.Top="53"/>
+                            <ComboBox x:Name="cityList" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="130" SelectionChanged="cityList_SelectionChanged" Canvas.Left="84" Canvas.Top="53"/>
+                            <ComboBox x:Name="zipcodeList" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="130" SelectionChanged="zipcodeList_SelectionChanged" Canvas.Left="84" Canvas.Top="98"/>
+                            <Label Content="Zipcode" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="75" FontSize="14" Canvas.Left="11" Canvas.Top="98"/>
+                        </Canvas>
+                    </GroupBox>
+                    <GroupBox Header="Business Category&#xD;&#xA;" HorizontalAlignment="Left" Height="492" Margin="10,220,0,0" VerticalAlignment="Top" Width="266">
+                        <Canvas Margin="0,0,-2,-39.333">
+                            <ListBox x:Name="selectedCategoriesList" Height="124" Canvas.Left="10" Canvas.Top="276" Width="236" SelectionMode="Multiple"/>
+                            <Button x:Name="addCategoryButton" Content="Add" Canvas.Left="10" Canvas.Top="232" Width="109" Height="39" Click="AddCategoryButton_Click"/>
+                            <Button x:Name="removeCategoryButton" Content="Remove" Canvas.Left="137" Canvas.Top="232" Width="109" Height="39" Click="RemoveCategoryButton_Click"/>
+                            <Button x:Name="searchBusinessesButton" Content="Search Businesses" Canvas.Left="10" Canvas.Top="405" Width="236" Height="42" Click="SearchBusinessesButton_Click"/>
+                            <ListBox x:Name="categoryList" Height="217" Canvas.Left="10" Canvas.Top="10" Width="236" SelectionMode="Multiple"/>
+                        </Canvas>
+                    </GroupBox>
+                    <GroupBox Header="Search Results" HorizontalAlignment="Left" Height="252" Margin="300,75,0,0" VerticalAlignment="Top" Width="536">
+                        <DataGrid x:Name="businessGrid" HorizontalAlignment="Left" Height="215" Margin="10,10,0,0" VerticalAlignment="Top" Width="502" SelectionMode="Single" SelectionChanged="BusinessGrid_SelectionChanged"/>
+                    </GroupBox>
+                    <Label Content="# of Businesses:" HorizontalAlignment="Left" Margin="347,25,0,0" VerticalAlignment="Top"/>
+                    <GroupBox Header="Selected Business&#xD;&#xA;" HorizontalAlignment="Left" Height="380" Margin="300,332,0,0" VerticalAlignment="Top" Width="536">
+                        <Canvas Margin="10,-13,-2,4.667">
+                            <Label x:Name="businessNameLabel" Content="Business Name" Canvas.Left="10" Canvas.Top="30" Width="250"/>
+                            <Label x:Name="addressLabel" Content="Address" Canvas.Left="10" Canvas.Top="92" Width="250"/>
+                            <ListBox x:Name="CategoriesList" Height="100" Canvas.Left="280" Canvas.Top="18" Width="100"/>
+                            <GroupBox Header="Friends who have reviewed this business" Height="98" Canvas.Left="10" Canvas.Top="205" Width="493">
+                                <DataGrid x:Name="friendReviewsGrid" HorizontalAlignment="Left" Margin="10,10,0,2.667" Width="459"/>
+                            </GroupBox>
+                            <TextBox x:Name="reviewText" Height="51" Canvas.Left="10" TextWrapping="Wrap" Text="&lt;&lt;review text&gt;&gt;" Canvas.Top="149" Width="386"/>
+                            <Label Content="Rating:" Canvas.Left="396" Canvas.Top="149" RenderTransformOrigin="1.757,0.282"/>
+                            <ComboBox x:Name="ratingList" Canvas.Left="448" Canvas.Top="149" Width="53"/>
+                            <Button x:Name="addReviewButton" Content="Add Review" Canvas.Left="401" Canvas.Top="180" Width="102"/>
+                            <TextBox x:Name="hoursList" Height="100" Canvas.Left="401" TextWrapping="Wrap" Text="Hours" Canvas.Top="18" Width="102"/>
+                            <Button x:Name="checkinButton" Content="Check-In" Canvas.Left="25" Canvas.Top="308" Width="92" Height="36"/>
+                            <Button x:Name="showCheckinButton" Content="Show Check-Ins" Canvas.Left="140" Canvas.Top="308" Width="90" Height="36"/>
+                            <Button x:Name="addToFavoritesButton" Content="Add To Favorites" Canvas.Left="260" Canvas.Top="308" Width="92" Height="36"/>
+                            <Button x:Name="showReviewsButton" Content="Show Reviews" Canvas.Left="383" Canvas.Top="308" Width="97" Height="36"/>
+                        </Canvas>
+                    </GroupBox>
+                    <GroupBox Header="Sort By" HorizontalAlignment="Left" Height="60" Margin="519,10,0,0" VerticalAlignment="Top" Width="285">
+                        <ComboBox x:Name="sortList" HorizontalAlignment="Left" Height="34" Margin="10,0,0,0" VerticalAlignment="Top" Width="250"/>
+                    </GroupBox>
+                    <Label x:Name="numBusinessesLabel" Content=" x" HorizontalAlignment="Left" Margin="445,25,0,0" VerticalAlignment="Top" Width="36"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
